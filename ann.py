@@ -48,3 +48,13 @@ test_input = torch.randn(1, 10)
 prediction = model(test_input)
 
 print("Prediction:", prediction)
+
+dummy_input = torch.randn(1, 10)
+
+torch.onnx.export(
+    model,
+    dummy_input,
+    "ann_model.onnx",
+    input_names=["input"],
+    output_names=["output"]
+)
